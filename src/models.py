@@ -2,6 +2,7 @@
  Explainer Website"""
 
 from torch import nn
+from torch.nn import functional as F
 from torchinfo import summary
 from torchvision.models.efficientnet import EfficientNet
 from . import utils
@@ -87,6 +88,20 @@ class TransformerEncoder(nn.Module):
         x = self.msa_block(x) + x
         x = self.mlp_block(x) + x
         return x
+
+
+class ImageDiffuser(nn.Module):
+
+    """
+    Creates an Image Generative Diffusion model
+
+    :arg arg1: something
+    """
+
+    def __init__(self):
+        super().__init__()
+
+
 
 
 class ViT(nn.Module):

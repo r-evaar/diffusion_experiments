@@ -119,7 +119,7 @@ class ExpWrapper:
         return self.obj
 
 
-def visualize(loader, n=5, classes=None):
+def visualize(loader, n=5, classes=None, transform=None):
     col = 3
     row = ceil(n / col)
     i = 0
@@ -131,6 +131,8 @@ def visualize(loader, n=5, classes=None):
                 stop = True
                 break
             plt.subplot(row, col, i+1)
+            if transform:
+                x_i = transform(x_i)
             plt.imshow(x_i.detach().cpu().permute(1, 2, 0))
             title = y_i.item()
             if classes:
